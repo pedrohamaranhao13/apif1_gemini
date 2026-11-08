@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: apif1
+
+  # Configuração de Conexão com o PostgresSQL
+  datasource:
+    url: jdbc:postgresql://localhost:5432/f1_db
+    username: ${DB_USUARIO}
+    password: ${DB_SENHA}
+    driver-class-name: org.postgresql.Driver
+
+  # Configuração do JPA / Hibernate
+  jpa:
+    hibernate:
+      ddl-auto: validate # Valida o schema criado pelo Flyway
+    show-sql: true # Mostra os SQLs gerados co console (útil em DEV)
+    properties:
+      hibernate:
+        format_sql: true # Formata o SQL no console para melhor leitura
+
+  #Configuração do Flyway
+  flyway:
+    enabled: true
+    baseline-on-migrate: true # Permite aplicar o Flyway em bancos já existentes
+
+server:
+  port: 8080
